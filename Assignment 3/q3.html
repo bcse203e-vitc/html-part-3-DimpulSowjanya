@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flight Schedule Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 90%;
+      margin: 20px auto;
+      font-family: Arial, sans-serif;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #2c3e50;
+      color: white;
+    }
+
+    .international {
+      background-color: #f9e79f;
+    }
+    
+    .on-time {
+      color: green;
+      font-weight: bold;
+    }
+    .delayed {
+      color: orange;
+      font-weight: bold;
+    }
+    .cancelled {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align:center;">Flight Schedule Table</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Flight Number</th>
+        <th>Destination</th>
+        <th>Departure Time</th>
+        <th>Arrival Time</th>
+        <th>Duration</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>AI101</td>
+        <td>New York (International)</td>
+        <td>08:00 AM</td>
+        <td>04:00 PM</td>
+        <td><abbr title="8 hours 0 minutes">8h 0m</abbr></td>
+        <td class="on-time">On Time</td>
+      </tr>
+      <tr class="international">
+        <td>BA205</td>
+        <td>London (International)</td>
+        <td>09:30 AM</td>
+        <td>07:45 PM</td>
+        <td><abbr title="8 hours 15 minutes">8h 15m</abbr></td>
+        <td class="delayed">Delayed</td>
+      </tr>
+      <tr>
+        <td>DL309</td>
+        <td>Chicago (Domestic)</td>
+        <td>07:15 AM</td>
+        <td>09:30 AM</td>
+        <td><abbr title="2 hours 15 minutes">2h 15m</abbr></td>
+        <td class="on-time">On Time</td>
+      </tr>
+      <tr class="international">
+        <td>EK402</td>
+        <td>Dubai (International)</td>
+        <td>11:00 AM</td>
+        <td>09:00 PM</td>
+        <td><abbr title="10 hours 0 minutes">10h 0m</abbr></td>
+        <td class="cancelled">Cancelled</td>
+      </tr>
+      <tr>
+        <td>UA512</td>
+        <td>San Francisco (Domestic)</td>
+        <td>03:00 PM</td>
+        <td>06:00 PM</td>
+        <td><abbr title="3 hours 0 minutes">3h 0m</abbr></td>
+        <td class="on-time">On Time</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

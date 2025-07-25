@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Website Feedback Form</title>
+  <style>
+    .stars label {
+      font-size: 1.5rem;
+      color: gray;
+      cursor: pointer;
+    }
+    .stars input[type="radio"] {
+      display: none;
+    }
+    .stars input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+    .stars label:hover,
+    .stars label:hover ~ label {
+      color: gold;
+    }
+  </style>
+</head>
+<body>
+  <h2>Website Feedback Form</h2>
+  <form>
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" name="name" required /><br /><br />
+    <label for="email">Email:</label><br />
+    <input 
+      type="email" 
+      id="email" 
+      name="email" 
+      placeholder="example@domain.com" 
+      required 
+    /><br /><br />
+    <label>Rate the Website:</label><br />
+    <div class="stars">
+      <input type="radio" id="star5" name="rating" value="5" required />
+      <label for="star5" title="5 stars">&#9733;</label>
+      <input type="radio" id="star4" name="rating" value="4" />
+      <label for="star4" title="4 stars">&#9733;</label>
+      <input type="radio" id="star3" name="rating" value="3" />
+      <label for="star3" title="3 stars">&#9733;</label>
+      <input type="radio" id="star2" name="rating" value="2" />
+      <label for="star2" title="2 stars">&#9733;</label>
+      <input type="radio" id="star1" name="rating" value="1" />
+      <label for="star1" title="1 star">&#9733;</label>
+    </div><br />
+    <label for="feedbackType">Type of Feedback:</label><br />
+    <select id="feedbackType" name="feedbackType" required>
+      <option value="" disabled selected>Select feedback type</option>
+      <option value="suggestion">Suggestion</option>
+      <option value="bug">Bug Report</option>
+      <option value="compliment">Compliment</option>
+    </select><br /><br />
+
+    <label>Would you recommend us?</label><br />
+    <input type="radio" id="recommendYes" name="recommend" value="Yes" required />
+    <label for="recommendYes">Yes</label><br />
+    <input type="radio" id="recommendNo" name="recommend" value="No" />
+    <label for="recommendNo">No</label><br /><br />
+    <label for="feedback">Feedback:</label><br />
+    <textarea id="feedback" name="feedback" rows="5" cols="40" placeholder="Your feedback here..." required></textarea><br /><br />
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+</body>
+</html>

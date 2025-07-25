@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Travel Booking Form</title>
+  <style>
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Travel Booking Form</h2>
+  <form id="bookingForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required />
+    <label for="contact">Contact Information (Email or Phone):</label>
+    <input type="text" id="contact" name="contact" required />
+    <label for="destination">Destination:</label>
+    <select id="destination" name="destination" required>
+      <option value="" disabled selected>Select destination</option>
+      <option value="newyork">New York</option>
+      <option value="paris">Paris</option>
+      <option value="tokyo">Tokyo</option>
+      <option value="sydney">Sydney</option>
+      <option value="cairo">Cairo</option>
+    </select>
+    <label for="startDate">Start Date:</label>
+    <input type="date" id="startDate" name="startDate" required />
+
+    <label for="endDate">End Date:</label>
+    <input type="date" id="endDate" name="endDate" required />
+    <label for="travelers">Number of Travelers:</label>
+    <input type="number" id="travelers" name="travelers" min="1" value="1" required />
+    <label>Travel Class:</label>
+    <input type="radio" id="economy" name="travelClass" value="economy" checked />
+    <label for="economy">Economy</label>
+
+    <input type="radio" id="business" name="travelClass" value="business" />
+    <label for="business">Business</label>
+
+    <input type="radio" id="firstClass" name="travelClass" value="first" />
+    <label for="firstClass">First Class</label>
+    <label>
+      <input type="checkbox" id="insurance" name="insurance" />
+      Opt for Travel Insurance
+    </label>
+    <label for="totalCost">Total Cost (USD):</label>
+    <input type="text" id="totalCost" name="totalCost" readonly value="$0" />
+
+    <br /><br />
+    <button type="submit">Book Now</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('bookingForm');
+    const travelersInput = document.getElementById('travelers');
+    const travelClassRadios = document.getElementsByName('travelClass');
+    const insuranceCheckbox = document.getElementById('insurance');
+    const totalCostInput = document.getElementById('totalCost');
+
+ 
+    const prices = {
+      economy: 500,
+      business: 1200,
+      first: 2500
+    };
+
+
+    const insuranceCostPerTraveler = 50;
+
+    function calculateTotal() {
+      const numTravelers = parseInt(travelersInput.value) || 0;
+
+      let selectedClass = 'economy';
+      for (const radio of travelClassRadios) {
+        if (radio.checked) {
+          selectedClass = radio.value;
+          break;
+        }
+      }
+
+      let total = prices[selectedClass] * numTravelers;
+
+      if (insuranceCheckbox.checked) {
+        total += insuranceCostPerTraveler * numTravelers;
+      }
+
+      totalCostInput.value = `$${total.toLocaleString()}`;
+    }
+
+    travelersInput.addEventListener('input', calculateTotal);
+    insuranceCheckbox.addEventListener('change', calculateTotal);
+    travelClassRadios.forEach(radio => radio.addEventListener('change', calculateTotal));
+
+  
+    calculateTotal();
+
+    
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert(`Booking submitted!\nTotal cost: ${totalCostInput.value}`);
+      form.reset();
+      calculateTotal();
+    });
+  </script>
+</body>
+</html>
